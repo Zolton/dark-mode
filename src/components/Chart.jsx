@@ -8,6 +8,7 @@ import {
   YAxis,
   Tooltip
 } from "recharts";
+import {Link} from "react-router-dom"
 
 const Chart = ({ sparklineData }) => {
   const formattedData = sparklineData
@@ -27,6 +28,8 @@ const Chart = ({ sparklineData }) => {
     .filter(data => data);
 
   return (
+    <>
+    <Link to="/"><button>Click Me to go home</button></Link>
     <LineChart width={1100} height={300} data={formattedData}>
       <Line type="monotone" dataKey="value" stroke="#8884d8" />
       <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
@@ -34,6 +37,7 @@ const Chart = ({ sparklineData }) => {
       <YAxis />
       <Tooltip />
     </LineChart>
+    </>
   );
 };
 

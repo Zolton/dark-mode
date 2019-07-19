@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
-
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Home from "./Home";
 import Charts from "./components/Charts";
 import Navbar from "./components/Navbar";
 
@@ -20,8 +21,15 @@ const App = () => {
   }, []);
   return (
     <div className="App">
-      <Navbar />
-      <Charts coinData={coinData} />
+      <Router>
+        <Navbar />
+        <Route exact path="/" component={Home} />
+        <Route
+          exact
+          path="/charts"
+          render={props => <Charts {...props} coinData={coinData} />}
+        />
+      </Router>
     </div>
   );
 };
